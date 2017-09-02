@@ -46,6 +46,11 @@ wget http://archive.raspberrypi.org/debian/raspberrypi.gpg.key -O - | sudo apt-k
 
 echo "Installing R-pi specific binaries"
 apt-get update
+
+echo "Debian stretch fixes"
+apt --fix-broken install -y
+ln -s /dev/null /etc/systemd/network/99-default.link
+
 apt-get -y install binutils i2c-tools
 # Commenting raspi-config, not sure it is really needed
 #apt-get -y install libnewt0.52 whiptail triggerhappy lua5.1 locales
